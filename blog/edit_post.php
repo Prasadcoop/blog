@@ -48,21 +48,47 @@ input, textarea {
 </style>
 <div class="form-box">
   <h1>Create  Post </h1>
+
+  <?php
+    
+    
+    $con=mysqli_connect("localhost:3307","root","","blog");
+
+    if($con==false){
+        echo "Connection not successful";
+    }
+
+    $post_id=$_GET['id'];
+    $qry="SELECT * FROM `posts` WHERE `id`='$post_id'";
+    $result = mysqli_query($con, $qry);
+
+      if ($result) {
+          $user_data = mysqli_fetch_assoc($result);
+      } else {
+          // Handle the database query error here
+          die("Database query error: " . mysqli_error($con));
+      }
+
+     mysqli_close($con);
+
+  ?>
+
   <form action="" method="post">
     <div class="form-group">
       <label for="title">Title</label>
-      <input class="form-control" id="title" type="text" name="title">
+      <input class="form-control" id="title" type="text" name="title" value="<?php echo $user_data['title']; ?>">
     </div>
     <div class="form-group">
       <label for="tag">Add Tags</label>
-      <input class="form-control" id="tag" type="text" name="tag">
+      <input class="form-control" id="tag" type="text" name="tag" value="<?php echo $user_data['tag']; ?>">
     </div>
     <div class="form-group">
       <label for="content">content</label>
-      <textarea  class="form-control"  id="summernote" name="editor"></textarea>
+      <textarea  class="form-control"  id="summernote" name="editor"><?php echo $user_data['content']; ?></textarea>
      
     </div>
-    <input name="submit" class="btn btn-primary" type="submit" value="Submit" />
+    <input type="hidden" name='id' value="<?php echo $user_data['id']; ?>" />
+    <input name="submit" class="btn btn-primary" type="submit" value="Sumbit" />
     </div>
   </form>
 </div>
@@ -72,7 +98,7 @@ input, textarea {
     $(document).ready(function () {
         $('#summernote').summernote({
             height: 300, 
-            placeholder: 'Write your text here...', 
+            // placeholder: 'Write your text here...', 
             toolbar: [
                 ['style', ['bold', 'italic', 'underline', 'clear']],
                 ['font', ['strikethrough', 'superscript', 'subscript']],
@@ -93,23 +119,23 @@ if(isset($_POST['submit']))
 {
     include('../dbcon.php');
     $title=$_POST['title'];
-    
+    $post_id=$_POST['id'];
     $tag=$_POST['tag'];
     $content=$_POST['editor'];
 
-    //$userid=$_SESSION['user_id'];
-    $user_id="1";
-
+   
     
-    $qry = "INSERT INTO `posts`(`title`,`content`,`tag`,`user_id`) VALUES ('$title','$content','$tag','$user_id')";
+    $qry = "UPDATE `posts` SET `title`='$title',`tag`='$tag',`content`='$content' WHERE `id`='$post_id' ";
    
     $run=mysqli_query($con,$qry);
     if($run==true){
         ?>
         <script>
-            alert("Post send successfully");
+            alert("Post update successfully");
         </script>
+         
         <?php
+        header('location: blog.php');
     }
 }
 ?>

@@ -5,6 +5,9 @@ include('navbar.php');
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 <style>
 body {
@@ -52,20 +55,10 @@ input, textarea {
      mysqli_close($con);
 
   ?>
- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 
 
   <form action="" method="post">
-  <div class="form-group">
-  <img src="C:\Blog\profile_image.png" alt="Profile Image" class="img-thumbnail" width="150">
-  </div>
-  <div class="form-group">
-                <label for="profileImage">Upload New Image</label>
-                <input type="file" class="form-control-file" id="profileImage" name="profileImage">
-            </div>
+  
     <div class="form-group">
       <label for="username">Username</label>
       <input class="form-control" id="username" type="text" name="username"  value="<?php echo $user_data['username']; ?>">
