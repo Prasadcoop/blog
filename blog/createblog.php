@@ -98,8 +98,8 @@ if (isset($_POST['submit'])) {
   $tag = $_POST['tag'];
   $content = $_POST['editor'];
 
-  //$userid=$_SESSION['user_id'];
-  $user_id = "1";
+  $userid=$_SESSION['user_id'];
+  // $user_id = "1";
 
 
   $qry = "INSERT INTO `posts`(`title`,`content`,`tag`,`user_id`) VALUES ('$title','$content','$tag','$user_id')";

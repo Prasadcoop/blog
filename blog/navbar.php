@@ -19,6 +19,7 @@
       </div>
       <ul class="nav navbar-nav">
         <li class="active"><a href="blog.php">Home</a></li>
+        <li><a href="/all-blog.php">Activities</a></li>
         <li><a href="createblog.php">Create Post</a></li>
         <li><a href="profile.php">Profile</a></li>
       </ul>

@@ -42,7 +42,7 @@ include('navbar.php');
     echo "Connection not successful";
   }
 
-  $user_id = 6;
+  $userid=$_SESSION['user_id'];
   $qry = "SELECT * FROM `user_details` WHERE `id`='$user_id'";
   $result = mysqli_query($con, $qry);
 
@@ -84,7 +84,7 @@ if (isset($_POST['submit'])) {
 
 
   //$userid=$_SESSION['user_id'];
-  $user_id = "6";
+  $userid=$_SESSION['user_id'];
 
   $sql = "UPDATE `user_details` SET `username`='$username',`email`='$email' WHERE `id`='$user_id' ";
   $run = mysqli_query($con, $sql);
