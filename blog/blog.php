@@ -40,17 +40,17 @@ include('navbar.php');
 
                     <span class="badge"><?php echo htmlentities($data['created_at']); ?></span>
                     <div class="pull-right">
-                         
-                         <a href="edit_post.php?id=<?php echo ($data['id']); ?>"><button type="submit" name="edit" href="edit_post.php" class="btn btn-success" >Edit</button></a>
+
+                        <a href="edit_post.php?id=<?php echo ($data['id']); ?>"><button type="submit" name="edit" class="btn btn-success">Edit</button></a>
                         <!-- <button type="submit" name="edit" href="edit_post.php" class="btn btn-success">Edit</button> -->
-                        <button type="submit" name="delete" class="label label-danger">Delete</button>
+                        <a href="delete_post.php?id=<?php echo ($data['id']); ?>"> <button type="submit" name="delete" class="btn btn-danger">Delete</button></a>
                     </div>
                 </div>
                 <hr>
         <?php
             }
         } else {
-           
+
             die("Database query error: " . mysqli_error($con));
         }
 
@@ -59,3 +59,6 @@ include('navbar.php');
         ?>
 
     </div>
+
+
+   

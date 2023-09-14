@@ -4,4 +4,3 @@
  if($con==false){
      echo "Connection not successful";
  }
-?>

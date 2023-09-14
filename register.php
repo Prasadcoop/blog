@@ -27,15 +27,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // Hash the password
             $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-            
+
             // Insert user details into the database
             $sql = "INSERT INTO user_details (username, email, password,isActive) VALUES ('$username', '$email', '$hashedPassword', 1)";
-            
+
             if (mysqli_query($link, $sql)) {
-                ?><script>
-                alert("User added successfully.");
+?><script>
+                    alert("User added successfully.");
                 </script>
-                <?php
+<?php
             } else {
                 $error = "ERROR: Could not execute $sql. " . mysqli_error($link);
             }
